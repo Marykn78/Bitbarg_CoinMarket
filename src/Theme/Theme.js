@@ -5,7 +5,7 @@ const Theme = createTheme({
         MuiCssBaseline:{
             styleOverrides:{
                 body:{
-                    // backgroundColor:'#8d8d8d',
+                    backgroundColor:'white',
                 }
             }
         },
@@ -18,8 +18,7 @@ const Theme = createTheme({
                         backgroundColor:'#4285F2',
                         height:'36px',
                         fontSize:'14px',
-                        // width:'50%',
-                        // padding:'7px 16px',
+                        width:'100%',
                         '&:hover':{
 
                         }
@@ -29,9 +28,10 @@ const Theme = createTheme({
                     props:{variant:'secondaryButton'},
                     style:{
                         color:'#727272',
+                        // F2F2F2
                         backgroundColor:'#F2F2F2',
                         fontSize:'14px',
-
+                        width:'100%',
                     }
                 },
             ]
