@@ -17,12 +17,12 @@ const Header = () => {
   return (
     <AppBar
       position="static"
-      sx={{ backgroundColor: "white", borderBottom: 1,height:'auto' }}
+      sx={{ backgroundColor: "white",boxShadow:'0',height:'auto' }}
     >
       {/* <Container> */}
           {isMobile ? (
             <>
-            <Toolbar sx={{ justifyContent: "space-between" ,padding:'0'}}>
+            <Toolbar sx={{ justifyContent: "space-between",boxShadow:'1' ,padding:'0'}}>
               <Box sx={{ width: "20%" }}>
                 <Logo />
               </Box>

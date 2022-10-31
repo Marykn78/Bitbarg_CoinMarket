@@ -8,19 +8,22 @@ import SegmentRoundedIcon from '@mui/icons-material/SegmentRounded';
 const HeaderDesktop = () => {
     return ( 
         <Grid container sx={{color:'black',width:'100%',height:'75px',justifyContent:'space-around',alignItems:'center'}}>
-            <Grid item sx={{width:'45%',display:'flex',justifyContent:'space-evenly',paddingRight:'0'}}>
+            <Grid item sx={{width:'40%',display:'flex',justifyContent:'space-evenly',paddingRight:'0'}}>
                 <Button sx={{color:'black',padding:'0'}}>
-                    <SegmentRoundedIcon fontSize="large"/>
-                    <Typography variant='h6'>منو</Typography>
+                    <SegmentRoundedIcon sx={{ fontSize: 20 }} />
+                    <Typography variant='navtitle' sx={{color:'black'}}>منو</Typography>
                 </Button>
                 {navbaritems.map((text,index)=>(
-                    <Typography variant='h6' key={index}>{text.item}</Typography>
+                    <Button>
+                        <Typography variant='navtitle' key={index}>{text.item}</Typography>
+                    </Button>
                 ))}
             </Grid>
             <Grid item sx={{width:'20%',height:'50px',display:'flex',justifyContent:'space-around'}}>
-                <Button variant="contained" sx={{fontSize:'18px'}}>ورود / ثبت نام</Button>
-                <span>|</span>
-                <Logo/>
+                <Button variant="mainButton">ورود / ثبت نام</Button>
+                <span layout="row">|</span>
+                {/* <span layout="row"><hr flex/><hr flex/></span> */}
+                <Logo />
             </Grid>
         </Grid>
      );
@@ -29,3 +32,4 @@ const HeaderDesktop = () => {
 export default HeaderDesktop;
 
 {/* <HomeIcon sx={{ fontSize: 40 }} /> */}
+// fontSize="large"
