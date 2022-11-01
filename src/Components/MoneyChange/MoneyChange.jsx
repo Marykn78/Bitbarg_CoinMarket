@@ -5,11 +5,10 @@ import  Button  from "@mui/material/Button";
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import { MoneyChangetextfield } from "../../Data/Dataproject";
 import  Typography  from "@mui/material/Typography";
-// import StyledTextField from "../StyledTextField/StyledTextfield";
+import CoinModal from "../CoinModal/CoinModal";
 
 
 const MoneyChange = () => {
-
     return ( 
         <Grid container marginTop={10}  flexDirection={'column'} alignItems={'center'}>
             <Grid container item  justifyContent={'center'} xs={8} md={3} >
@@ -21,7 +20,7 @@ const MoneyChange = () => {
                         <TextField label={field.label} defaultValue={field.value} size="small" sx={{width:'240px'}} key={index}></TextField>
                     </Grid>
                 ))}
-                {/* <StyledTextField/> */}
+                <CoinModal/>
             </Grid>
             <Grid container item justifyContent={'space-around'} xs={8} md={3}>
                 <Grid width={'45%'}>
