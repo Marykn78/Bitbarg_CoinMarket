@@ -53,6 +53,12 @@ const Theme = createTheme({
             fontSize: '0.8rem',
             lineHeight: 1.75,
             color:'rgba(0,0,0,.6)',
+        },
+        subtitle1:{
+            color:'#4285F2',
+            fontSize:'12px',
+            lineHeight:1.5,
+            fontWeight:700,
         }
     },
     palette:{

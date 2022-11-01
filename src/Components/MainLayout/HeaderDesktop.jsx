@@ -2,6 +2,7 @@ import  Typography  from '@mui/material/Typography';
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 import navbaritems from "../../Data/Dataproject";
+import Divider from '@mui/material/Divider';
 import { ReactComponent as Logo } from "../../Assets/Svg/logo.svg";
 import SegmentRoundedIcon from '@mui/icons-material/SegmentRounded';
 
@@ -19,10 +20,9 @@ const HeaderDesktop = () => {
                     </Button>
                 ))}
             </Grid>
-            <Grid item sx={{width:'20%',height:'50px',display:'flex',justifyContent:'space-around'}}>
-                <Button variant="mainButton">ورود / ثبت نام</Button>
-                <span layout="row">|</span>
-                {/* <span layout="row"><hr flex/><hr flex/></span> */}
+            <Grid item sx={{width:'20%',height:'50px',display:'flex',justifyContent:'space-around',alignItems:'center'}}>
+                <Button sx={{width:'65%'}} variant="mainButton">ورود / ثبت نام</Button>
+                <Divider orientation="vertical" variant="middle" flexItem sx={{mx:1}} />
                 <Logo />
             </Grid>
         </Grid>

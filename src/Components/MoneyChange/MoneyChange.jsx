@@ -2,22 +2,28 @@ import  Grid  from "@mui/material/Grid";
 import bitbarg from '../../Assets/Images/bitbarg.webp'
 import  TextField  from "@mui/material/TextField";
 import  Button  from "@mui/material/Button";
+import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import { MoneyChangetextfield } from "../../Data/Dataproject";
+import  Typography  from "@mui/material/Typography";
 // import StyledTextField from "../StyledTextField/StyledTextfield";
+
 
 const MoneyChange = () => {
 
     return ( 
-        <Grid container marginTop={10}  justifyContent={'center'} flexDirection={'column'} alignItems={'center'}>
-            <Grid container item width={'25%'} justifyContent={'center'} >
+        <Grid container marginTop={10}  flexDirection={'column'} alignItems={'center'}>
+            <Grid container item  justifyContent={'center'} xs={8} md={3} >
                 <img width={'70%'} src={bitbarg} alt=''/>
             </Grid>
-            <Grid container item justifyContent={'space-evenly'} margin={2} width={'50%'}>
-                <TextField label="تومان" defaultValue="33,400" size="small" sx={{width:'250px'}}></TextField>
-                <TextField label="واحد" defaultValue="1" size="small" sx={{width:'250px'}}></TextField>    
-                <TextField label="انتخاب ارز" defaultValue="تتر (USDT)" size="small" sx={{width:'250px'}}/>
+            <Grid container item justifyContent={'space-evenly'}  margin={2} xs={10} md={6}>
+                {MoneyChangetextfield.map((field,index) =>(
+                    <Grid item  m={{xs:1,md:0}}>
+                        <TextField label={field.label} defaultValue={field.value} size="small" sx={{width:'240px'}} key={index}></TextField>
+                    </Grid>
+                ))}
                 {/* <StyledTextField/> */}
             </Grid>
-            <Grid container item justifyContent={'space-around'} width={'25%'}>
+            <Grid container item justifyContent={'space-around'} xs={8} md={3}>
                 <Grid width={'45%'}>
                     <Button variant="mainButton">درخواست خرید</Button>
                 </Grid>
@@ -25,7 +31,13 @@ const MoneyChange = () => {
                     <Button variant="secondaryButton" >فروش</Button>
                 </Grid>
             </Grid>
-            <Grid></Grid>
+            <Grid container item flexDirection={'column'} justifyContent={'center'} alignItems={'center'} m={2} xs={4} md={2}>
+                <Typography variant="navtitle" sx={{color:'#000',textAlign:'center'}}>پشتیبانی 24 ساعته <br/>حتی در روزهای تعطیل</Typography>
+                <Button item sx={{textAlign:'center'}}>
+                    <Typography ography p={1} variant="subtitle1">{"021-91079677"}</Typography>
+                    <LocalPhoneOutlinedIcon sx={{ color:'#4285F2'}} fontSize="small"/>
+                </Button>
+            </Grid>
         </Grid>
      );
 }
