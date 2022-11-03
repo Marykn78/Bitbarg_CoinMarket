@@ -5,6 +5,7 @@ import navbaritems from "../../Data/Dataproject";
 import Divider from '@mui/material/Divider';
 import { ReactComponent as Logo } from "../../Assets/Svg/logo.svg";
 import SegmentRoundedIcon from '@mui/icons-material/SegmentRounded';
+import { Link } from 'react-router-dom';
 
 const HeaderDesktop = () => {
     return ( 
@@ -13,6 +14,11 @@ const HeaderDesktop = () => {
                 <Button sx={{color:'black',padding:'0'}}>
                     <SegmentRoundedIcon sx={{ fontSize: 20 }} />
                     <Typography variant='navtitle' sx={{color:'black'}}>منو</Typography>
+                </Button>
+                <Button>
+                    <Link to={'/CurrentPrice'}>
+                        <Typography variant='navtitle'>قیمت لحظه ای</Typography>
+                    </Link>
                 </Button>
                 {navbaritems.map((text,index)=>(
                     <Button>

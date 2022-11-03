@@ -1,9 +1,11 @@
-import Main from "./Components/MainLayout/Main";
+// import Main from "./Components/MainLayout/Main";
+import {RouterProvider} from 'react-router-dom'
+import router from './routes/router';
 
 function App() {
   return (
     <>
-      <Main/>
+      <RouterProvider router={router}/>
     </>
   );
 }
