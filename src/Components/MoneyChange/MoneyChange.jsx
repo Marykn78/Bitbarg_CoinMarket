@@ -8,8 +8,9 @@ import  Typography  from "@mui/material/Typography";
 import CoinModal from "../CoinModal/CoinModal";
 import { useState } from "react";
 
-const MoneyChange = ({modaldata}) => {
+const MoneyChange = () => {
     const [form,setForm] = useState('');
+
     return ( 
         <Grid container marginTop={10}  flexDirection={'column'} alignItems={'center'}>
             <Grid container item  justifyContent={'center'} xs={8} md={3}>
@@ -27,7 +28,7 @@ const MoneyChange = ({modaldata}) => {
                 <Grid item  m={{xs:1,md:0}}>
                     <TextField  label={'واحد'} defaultValue={'1'} size="small" sx={{width:'240px'}}></TextField>
                 </Grid>
-                <CoinModal modaldata={modaldata} form={form} setForm={setForm}/>
+                <CoinModal form={form} setForm={setForm}/>
             </Grid>
             <Grid container item justifyContent={'space-around'} xs={8} md={3}>
                 <Grid width={'45%'}>

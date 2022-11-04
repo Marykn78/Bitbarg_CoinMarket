@@ -8,7 +8,8 @@ import InputAdornment from '@mui/material/InputAdornment';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import IconButton from '@mui/material/IconButton';
 import { Divider, List, ListItem, ListItemButton } from '@mui/material';
-import { useState } from 'react';
+import { useState,useContext } from 'react';
+import { CoindataContext } from '../CoindataContext/CoindataContext';
 
 const style = {
     position: 'absolute',
@@ -25,16 +26,18 @@ const style = {
     // overflowY:'scroll'
   };
 
-const CoinSelectItem = ({open,setOpen,modaldata,form,setForm}) => {
+const CoinSelectItem = ({open,setOpen,form,setForm}) => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [search, setSearch] = useState("");
-    // const [form,setForm] = useState([]);
-    // const [convertmoney,setConvert]=useState('')
+
+    const {coindata}=useContext(CoindataContext)
+    
+
     const searchHandler =(e)=>{
         setSearch(e.target.value)
     }
-    // Math.ceil((modaldata?.data?.coins[item]?.price)*34300)
+    // Math.ceil((coindata?.data?.coins[item]?.price)*34300)
     const inputHandler = (item) => {
         setForm({name:item.name,icon:item.iconUrl,price:Math.ceil((item.price)*34300)});
         setOpen(false)
@@ -71,25 +74,25 @@ const CoinSelectItem = ({open,setOpen,modaldata,form,setForm}) => {
             </Grid>
             <List p={2} sx={{maxHeight:'450px',overflowY:'scroll'}}>
                     {[0,1,2,3,4,5,6,7,8,9,10,11,12].filter(coin =>(
-                        modaldata?.data?.coins[coin]?.name.toUpperCase().includes(search.toUpperCase())
+                        coindata?.data?.coins[coin]?.name.toUpperCase().includes(search.toUpperCase())
                     )).map(item=>(
                         <>
-                            <ListItemButton onClick={()=>inputHandler(modaldata?.data?.coins[item])} >
+                            <ListItemButton onClick={()=>inputHandler(coindata?.data?.coins[item])} >
                                 <ListItem sx={{textAlign:'right'}} >
                                     <Grid container justifyContent={'space-between'} alignItems={'center'}>
                                         <Grid  item display={'flex'}>
                                             <Grid >
-                                                <img width={'30px'} src={`${modaldata?.data?.coins[item]?.iconUrl}`} alt=''/>
+                                                <img width={'30px'} src={`${coindata?.data?.coins[item]?.iconUrl}`} alt=''/>
                                             </Grid>
                                             <Grid >
-                                                <Typography>{modaldata?.data?.coins[item]?.name}</Typography>
-                                                <Typography>{modaldata?.data?.coins[item]?.symbol}</Typography>
+                                                <Typography>{coindata?.data?.coins[item]?.name}</Typography>
+                                                <Typography>{coindata?.data?.coins[item]?.symbol}</Typography>
                                             </Grid>
                                         </Grid>
                                     </Grid>
                                     <Grid item alignItems={'center'} xs={6}>
                                         <Typography>{'قیمت خرید'}</Typography>
-                                        <Typography variant=''>{Math.ceil((modaldata?.data?.coins[item]?.price)*34300).toString().split('')}</Typography>
+                                        <Typography variant=''>{Math.ceil((coindata?.data?.coins[item]?.price)*34300).toString().split('')}</Typography>
                                         <Typography variant='navtitle'>تومان</Typography>
                                     </Grid>
                                   </ListItem>
@@ -112,18 +115,18 @@ export default CoinSelectItem;
     // useEffect(()=>{
     //     axios.request(options).then((response)=> {
     //         console.log(response.data);
-    //         setModaldata(response.data)
+    //         setcoindata(response.data)
     //     }).catch((error)=>{
     //         console.error(error);
     //     });
     // },[])
     
     // const handleGetData = async () => {
-    //     const data =await handlegetmodaldata()
-    //     setModaldata(data)
+    //     const data =await handlegetcoindata()
+    //     setcoindata(data)
     // }
 
     // useEffect(() => {
     //     handleGetData()
     // }, [])
-    // console.log(modaldata)
+    // console.log(coindata)

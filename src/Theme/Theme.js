@@ -4,8 +4,13 @@ const Theme = createTheme({
     components:{
         MuiCssBaseline:{
             styleOverrides:{
+                
                 body:{
                     backgroundColor:'white',
+                    
+                },
+                'a':{
+                    textDecoration:'none'
                 }
             }
         },
