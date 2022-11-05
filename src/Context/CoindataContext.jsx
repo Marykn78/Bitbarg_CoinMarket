@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
 import { createContext } from "react";
-import { handlegetmodaldata } from "../../Api/Api";
+import { handlegetmodaldata } from "../Api/Api";
 
 export const CoindataContext =createContext({
     coindata:'',
@@ -15,7 +15,6 @@ const Coindata =({children})=>{
     }
     useEffect(() => {
         handleGetData()
-        console.log(coindata)
     }, [])
     return(
         <CoindataContext.Provider value={{coindata,setCoindata}}>

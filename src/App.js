@@ -1,7 +1,6 @@
-// import Main from "./Components/MainLayout/Main";
 import {RouterProvider} from 'react-router-dom'
 import router from './routes/router';
-import Coindata from './Components/CoindataContext/CoindataContext';
+import Coindata from './Context/CoindataContext';
 
 function App() {
   return (

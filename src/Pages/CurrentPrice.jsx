@@ -1,8 +1,8 @@
+import CustomizedTableprice from "../Components/CustomizedTableprice/CustomizedTableprice";
+
 const CurrentPrice = () => {
     return ( 
-        <>
-            <h1>dd</h1>
-        </>
+        <CustomizedTableprice></CustomizedTableprice>
      );
 }
  

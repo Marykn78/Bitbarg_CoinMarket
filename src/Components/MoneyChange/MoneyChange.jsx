@@ -10,24 +10,24 @@ import { useState } from "react";
 
 const MoneyChange = () => {
     const [form,setForm] = useState('');
+    const [unit,setUnit] =useState(1);
 
+    const unitinputHandler =(e)=>{
+        setUnit(e.target.value)
+    }
     return ( 
         <Grid container marginTop={10}  flexDirection={'column'} alignItems={'center'}>
             <Grid container item  justifyContent={'center'} xs={8} md={3}>
                 <img width={'70%'} src={bitbarg} alt=''/>
             </Grid>
             <Grid container item justifyContent={'space-evenly'}  margin={2} xs={10} md={6}>
-                {/* {MoneyChangetextfield.map((field,index) =>(
-                    <Grid item  m={{xs:1,md:0}}>
-                        <TextField value={form.price} label={field.label} defaultValue={field.value} size="small" sx={{width:'240px'}} key={index}></TextField>
-                    </Grid>
-                ))} */}
                 <Grid item  m={{xs:1,md:0}}>
-                    <TextField value={form.price} label={'تومان'} defaultValue={'33,400'} size="small" sx={{width:'240px'}} InputProps={{ readOnly:true}} ></TextField>
+                    <TextField  value={(form.price)*unit} label={'تومان'} defaultValue={'33400'} size="small" sx={{width:'240px'}} InputProps={{ readOnly:true}} ></TextField>
                 </Grid>
                 <Grid item  m={{xs:1,md:0}}>
-                    <TextField  label={'واحد'} defaultValue={'1'} size="small" sx={{width:'240px'}}></TextField>
+                    <TextField onChange={unitinputHandler}  label={'واحد'} defaultValue={1} size="small" sx={{width:'240px'}}></TextField>
                 </Grid>
+
                 <CoinModal form={form} setForm={setForm}/>
             </Grid>
             <Grid container item justifyContent={'space-around'} xs={8} md={3}>
@@ -50,3 +50,9 @@ const MoneyChange = () => {
 }
  
 export default MoneyChange;
+
+{/* {MoneyChangetextfield.map((field,index) =>(
+        <Grid item  m={{xs:1,md:0}}>
+            <TextField value={form.price} label={field.label} defaultValue={field.value} size="small" sx={{width:'240px'}} key={index}></TextField>
+        </Grid>
+))} */}

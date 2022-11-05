@@ -9,7 +9,7 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import IconButton from '@mui/material/IconButton';
 import { Divider, List, ListItem, ListItemButton } from '@mui/material';
 import { useState,useContext } from 'react';
-import { CoindataContext } from '../CoindataContext/CoindataContext';
+import { CoindataContext } from '../../Context/CoindataContext';
 
 const style = {
     position: 'absolute',
@@ -32,13 +32,11 @@ const CoinSelectItem = ({open,setOpen,form,setForm}) => {
     const [search, setSearch] = useState("");
 
     const {coindata}=useContext(CoindataContext)
-    
-
     const searchHandler =(e)=>{
         setSearch(e.target.value)
     }
-    // Math.ceil((coindata?.data?.coins[item]?.price)*34300)
     const inputHandler = (item) => {
+        // const price =Math.ceil((item.price)*34300)
         setForm({name:item.name,icon:item.iconUrl,price:Math.ceil((item.price)*34300)});
         setOpen(false)
     };
@@ -46,7 +44,7 @@ const CoinSelectItem = ({open,setOpen,form,setForm}) => {
         
         <div>
         <TextField label={'انتخاب ارز'} value={form.name} defaultValue={'تتر (USDT)'} size="small" sx={{width:'240px'}} onClick={handleOpen}
-        InputProps={{ readOnly:true ,startAdornment: <img width={'30px'} src={form.icon} alt='' />}}></TextField>
+        InputProps={{ readOnly:true ,startAdornment: <img textAlign={'center'} width={'30px'} src={form.icon} alt='' />}}></TextField>
         <Modal
           open={open}
           onClose={handleClose}
