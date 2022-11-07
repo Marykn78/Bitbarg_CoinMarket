@@ -14,13 +14,18 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 
 export const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  width:50,
+  // borderRadius:'10px',
   [`&.${tableCellClasses.head}`]: {
     // backgroundColor: theme.palette.common.black,
     backgroundColor: theme.palette.action.hover,
     color: theme.palette.common.black,
+    width:500,
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
+    borderRadius:'10px'
+    // width:'50%'
   },
 }));
 
@@ -32,6 +37,9 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
   '&:last-child td, &:last-child th': {
     border: 0,
   },
+  // '&:first-child td, &:first-child th': {
+  //   border: 0,
+  // },
 }));
 
 

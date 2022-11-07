@@ -4,12 +4,14 @@ import Modal from '@mui/material/Modal';
 import  TextField  from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import CloseIcon from '@mui/icons-material/Close';
-import InputAdornment from '@mui/material/InputAdornment';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+// import InputAdornment from '@mui/material/InputAdornment';
+// import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import IconButton from '@mui/material/IconButton';
 import { Divider, List, ListItem, ListItemButton } from '@mui/material';
-import { useState,useContext } from 'react';
+import { useContext } from 'react';
 import { CoindataContext } from '../../Context/CoindataContext';
+import SearchCoin from '../SearchCoin/SearchCoin';
+import { SearchcoinContext } from '../../Context/CoindataContext';
 
 const style = {
     position: 'absolute',
@@ -29,12 +31,9 @@ const style = {
 const CoinSelectItem = ({open,setOpen,form,setForm}) => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const [search, setSearch] = useState("");
-
+    const {search} =useContext(SearchcoinContext)
     const {coindata}=useContext(CoindataContext)
-    const searchHandler =(e)=>{
-        setSearch(e.target.value)
-    }
+    // console.log(coindata)
     const inputHandler = (item) => {
         // const price =Math.ceil((item.price)*34300)
         setForm({name:item.name,icon:item.iconUrl,price:Math.ceil((item.price)*34300)});
@@ -42,9 +41,9 @@ const CoinSelectItem = ({open,setOpen,form,setForm}) => {
     };
     return ( 
         
-        <div>
-        <TextField label={'انتخاب ارز'} value={form.name} defaultValue={'تتر (USDT)'} size="small" sx={{width:'240px'}} onClick={handleOpen}
-        InputProps={{ readOnly:true ,startAdornment: <img textAlign={'center'} width={'30px'} src={form.icon} alt='' />}}></TextField>
+        <>
+        <TextField label={'انتخاب ارز'} value={form?.name} defaultValue={'تتر (USDT)'} size="small" sx={{width:'240px'}} onClick={handleOpen}
+        InputProps={{ readOnly:true ,startAdornment: <img textAlign={'center'} width={'30px'} src={form?.icon} alt='' />}}></TextField>
         <Modal
           open={open}
           onClose={handleClose}
@@ -57,40 +56,31 @@ const CoinSelectItem = ({open,setOpen,form,setForm}) => {
                         <CloseIcon onClick={handleClose}/>
                     </IconButton>
                 </Grid>
-                <Grid container item mt={2} justifyContent={'center'}>
-                    <TextField fullWidth type="search"  size='small' placeholder='جستجو' 
-                        onChange={searchHandler}
-                        InputProps={{
-                            startAdornment: (
-                              <InputAdornment position="start">
-                                <SearchOutlinedIcon />
-                              </InputAdornment>
-                            ),
-                        }}
-                    />
+                <Grid container item mt={2} xs={12}  justifyContent={'center'}>
+                    <SearchCoin />
                 </Grid>
             </Grid>
             <List p={2} sx={{maxHeight:'450px',overflowY:'scroll'}}>
-                    {[0,1,2,3,4,5,6,7,8,9,10,11,12].filter(coin =>(
-                        coindata?.data?.coins[coin]?.name.toUpperCase().includes(search.toUpperCase())
+                    {coindata.filter(coin =>(
+                        coin?.name.toUpperCase().includes(search.toUpperCase())
                     )).map(item=>(
                         <>
-                            <ListItemButton onClick={()=>inputHandler(coindata?.data?.coins[item])} >
+                            <ListItemButton onClick={()=>inputHandler(item)} >
                                 <ListItem sx={{textAlign:'right'}} >
                                     <Grid container justifyContent={'space-between'} alignItems={'center'}>
                                         <Grid  item display={'flex'}>
                                             <Grid >
-                                                <img width={'30px'} src={`${coindata?.data?.coins[item]?.iconUrl}`} alt=''/>
+                                                <img width={'30px'} src={`${item?.iconUrl}`} alt=''/>
                                             </Grid>
                                             <Grid >
-                                                <Typography>{coindata?.data?.coins[item]?.name}</Typography>
-                                                <Typography>{coindata?.data?.coins[item]?.symbol}</Typography>
+                                                <Typography>{item?.name}</Typography>
+                                                <Typography>{item?.symbol}</Typography>
                                             </Grid>
                                         </Grid>
                                     </Grid>
                                     <Grid item alignItems={'center'} xs={6}>
                                         <Typography>{'قیمت خرید'}</Typography>
-                                        <Typography variant=''>{Math.ceil((coindata?.data?.coins[item]?.price)*34300).toString().split('')}</Typography>
+                                        <Typography variant=''>{Math.ceil((item?.price)*34300).toString().split('')}</Typography>
                                         <Typography variant='navtitle'>تومان</Typography>
                                     </Grid>
                                   </ListItem>
@@ -102,7 +92,7 @@ const CoinSelectItem = ({open,setOpen,form,setForm}) => {
             </List>
           </Box>
         </Modal>
-      </div>
+      </>
      );
 }
  

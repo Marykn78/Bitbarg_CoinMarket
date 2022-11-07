@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import CoinSelectItem from './CoinSelectItem';
 
 const CoinModal = ({form,setForm}) => {

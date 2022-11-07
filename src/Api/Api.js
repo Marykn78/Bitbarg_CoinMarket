@@ -11,8 +11,10 @@ export const options =axios.create({
 });
 
 export const handlegetmodaldata =()=>{
-    return options('/coins').then(data=>data.data)
+  return options('/coins').then(data=>data.data?.data?.coins)
+    
 }
+
 // axios.request(options).then((response)=>{
 // 	console.log(response.data);
 // }).catch(function (error) {

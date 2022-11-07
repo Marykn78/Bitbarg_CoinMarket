@@ -4,10 +4,11 @@ const Theme = createTheme({
     components:{
         MuiCssBaseline:{
             styleOverrides:{
-                
                 body:{
+                    // ".margin": {
+                    //     margin:120,
+                    // },
                     backgroundColor:'white',
-                    
                 },
                 'a':{
                     textDecoration:'none'
@@ -45,7 +46,10 @@ const Theme = createTheme({
     typography:{
         fontFamily:'Iransans',
         h1:{
-
+            fontWeight:600,
+            fontSize:'1.3rem',
+            color:'#212121',
+            lineHeight:1.5,
         },
         h2:{
             fontWeight:400,
