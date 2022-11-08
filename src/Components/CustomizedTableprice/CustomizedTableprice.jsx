@@ -3,18 +3,16 @@ import TableBody from '@mui/material/TableBody';
 import TableHead from '@mui/material/TableHead';
 import TableContainer from '@mui/material/TableContainer';
 import Grid  from '@mui/material/Grid';
-// import Paper from '@mui/material/Paper';
 import { StyledTableCell } from '../StyledTable/StyledTable';
 import { StyledTableRow } from '../StyledTable/StyledTable';
 import TableRow from '@mui/material/TableRow';
 import { useContext, useEffect } from 'react';
 import { CoindataContext } from '../../Context/CoindataContext';
-import { IconButton, Typography } from '@mui/material';
+import  IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
 import { SearchcoinContext } from "../../Context/CoindataContext";
-// import { useState } from 'react';
 import StarOutlineRoundedIcon from '@mui/icons-material/StarOutlineRounded';
 import StarRoundedIcon from '@mui/icons-material/StarRounded';
-// import { useState } from 'react';
 
 // function createData(name, calories, fat, carbs, protein) {
 //   return { name, calories, fat, carbs, protein };
@@ -26,12 +24,9 @@ import StarRoundedIcon from '@mui/icons-material/StarRounded';
   //   createData('Cupcake', 305, 3.7, 67, 4.3),
   // ];
   
- const  CustomizedTableprice=({filtered,mark,setFiltered,formprice,setFormprice})=> {
+ const  CustomizedTableprice=({mark,formprice,filtered, setFiltered})=> {
   const{coindata,setCoindata}=useContext(CoindataContext)
   const {search}=useContext(SearchcoinContext)
-
-
-
   const checkmarkHandler =()=>{
     if(mark){
       setFiltered(coindata.filter(item=>(item.favorit === true)))
@@ -51,16 +46,15 @@ import StarRoundedIcon from '@mui/icons-material/StarRounded';
     );
   };
     return (
-      // component={Paper} 
       <TableContainer >
         <Table sx={{ minWidth: 500}} aria-label="customized table">
           <TableHead sx={{display:{xs:'none',md:'contents'}}}>
             <TableRow>
               <StyledTableCell>نشان کردن</StyledTableCell>
-              <StyledTableCell>تغیرات </StyledTableCell>
+              <StyledTableCell>تغییرات </StyledTableCell>
               <StyledTableCell align="center">ارزش بازار</StyledTableCell>
               <StyledTableCell align="center">قیمت خرید</StyledTableCell>
-              <StyledTableCell align="center" sx={{width:'150px'}}>ارز دیجیتال</StyledTableCell>
+              <StyledTableCell align="center">ارز دیجیتال</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -71,7 +65,7 @@ import StarRoundedIcon from '@mui/icons-material/StarRounded';
                     {row?.favorit ? <StarRoundedIcon/>:<StarOutlineRoundedIcon/>} 
                   </IconButton>
                 </StyledTableCell>
-                <StyledTableCell align="center" sx={{display:{xs:'none',md:'flex'}}}>{row?.change}</StyledTableCell>
+                <StyledTableCell align="left">{row?.change}</StyledTableCell>
                 <StyledTableCell align="center">{row?.marketCap}</StyledTableCell>
                 <StyledTableCell align="center">{formprice ?  Math.ceil((row?.price)*34300) : (row?.price)}</StyledTableCell>
                 {/* <StyledTableCell align="center">{formprice ? <Typography>Math.ceil((row?.price)*34300) InputProps={{}}</Typography>: (row?.price)}</StyledTableCell> */}
