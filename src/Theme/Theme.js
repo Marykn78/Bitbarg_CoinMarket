@@ -5,9 +5,6 @@ const Theme = createTheme({
         MuiCssBaseline:{
             styleOverrides:{
                 body:{
-                    // ".margin": {
-                    //     margin:120,
-                    // },
                     backgroundColor:'white',
                 },
                 'a':{

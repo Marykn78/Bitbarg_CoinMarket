@@ -1,21 +1,9 @@
-// import styled from "@emotion/styled";
-// import  TextField  from "@mui/material/TextField";
-
-
-// const StyledTextField =styled(TextField)(({theme})=>({
-//     height: 20,
-//     color:'red'
-// }))
-
-// export default StyledTextField;
-
 import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 
 export const StyledTableCell = styled(TableCell)(({ theme }) => ({
   width:50,
-  // borderRadius:'10px',
   [`&.${tableCellClasses.head}`]: {
     // backgroundColor: theme.palette.common.black,
     backgroundColor: theme.palette.action.hover,
@@ -25,21 +13,15 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
     borderRadius:'10px'
-    // width:'50%'
   },
 }));
 
  export const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
-    // backgroundColor: theme.palette.action.hover,
   },
-  // hide last border
   '&:last-child td, &:last-child th': {
     border: 0,
   },
-  // '&:first-child td, &:first-child th': {
-  //   border: 0,
-  // },
 }));
 
 

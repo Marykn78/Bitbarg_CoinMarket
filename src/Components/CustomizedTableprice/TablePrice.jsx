@@ -1,12 +1,10 @@
 import { useMediaQuery, useTheme } from "@mui/material";
 import CustomizedTableprice from "./CustomizedTableprice";
 import TablePriceMobile from "./TablePriceMobile";
-import { useState } from "react";
 
-const TablePrice = ({ formprice, mark }) => {
+const TablePrice = ({ formprice, mark ,filtered, setFiltered}) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  const [filtered, setFiltered] = useState([]);
   return (
     <>
       {isMobile ? (

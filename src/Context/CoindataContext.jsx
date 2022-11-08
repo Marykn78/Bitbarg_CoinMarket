@@ -1,7 +1,6 @@
 import { useState,useEffect } from "react";
 import { createContext } from "react";
 import { handlegetmodaldata } from "../Api/Api";
-// import { options } from "../Api/Api";
 
 export const CoindataContext =createContext({
     coindata:'',
@@ -15,13 +14,10 @@ export const SearchcoinContext=createContext({
 const Coindata =({children})=>{
     const [coindata,setCoindata]=useState([])
     const [search, setSearch] = useState('');
-    // const [pending,setpending]=useState(true)
-    // console.log(coindata)
     const handleGetData = async() => {
         const data =await handlegetmodaldata()
         setCoindata(data.map(item=>({...item,favorit:false})))
     }
-
     useEffect(() => {
         handleGetData()
     }, [])
@@ -38,18 +34,3 @@ const Coindata =({children})=>{
 }
 
 export default Coindata;
-
-//  if(pending){
-//     return <div>pending</div>
-//   }
-        // if(data.cod==='200'){
-        //     setCoindata(data.map(item=>({...item,favorit:false})))
-
-        // }
-
-    // useEffect(()=>{
-    //     if(coindata?.data?.length){  
-    //       setpending(false)
-    //     }
-    // },[coindata])
-//data or list

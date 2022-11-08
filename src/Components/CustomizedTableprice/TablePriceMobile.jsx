@@ -11,45 +11,50 @@ import Typography from "@mui/material/Typography";
 import { SearchcoinContext } from "../../Context/CoindataContext";
 import StarOutlineRoundedIcon from "@mui/icons-material/StarOutlineRounded";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
+import { useCallback } from "react";
 
 const TablePriceMobile = ({ mark, formprice, filtered, setFiltered }) => {
   const { coindata, setCoindata } = useContext(CoindataContext);
   const { search } = useContext(SearchcoinContext);
-  // const [filtered, setFiltered] = useState([]);
 
-  const checkmarkHandler = () => {
+  const checkmarkHandler = useCallback(() => {
     if (mark) {
       setFiltered(coindata.filter((item) => item.favorit === true));
     } else {
       setFiltered(coindata);
     }
-  };
+  }, [coindata, mark]);
+
   useEffect(() => {
     checkmarkHandler();
   }, [coindata, mark]);
-
-  const checkstarmarkHandler = (name) => {
-    setCoindata(
-      coindata.map((item) =>
-        item.name === name ? { ...item, favorit: !item.favorit } : item
-      )
-    );
-  };
+  const starmarkHandler = useCallback(
+    (name) => {
+      setCoindata(
+        coindata.map((item) =>
+          item.name === name ? { ...item, favorit: !item.favorit } : item
+        )
+      );
+    },
+    [coindata]
+  );
   return (
     <TableContainer>
       <Table sx={{ minWidth: 400, overflow: "hidden" }}>
         <TableBody>
           {filtered.length === 0 ? (
-            <Typography>nothing</Typography>
+            <Typography variant="navtitle">
+              در حال حاضر موردی وجود ندارد
+            </Typography>
           ) : (
             filtered
               .filter((coin) =>
                 coin?.name.toUpperCase().includes(search.toUpperCase())
               )
-              .map((row) => (
-                <StyledTableRow>
+              .map((row, index) => (
+                <StyledTableRow key={index}>
                   <StyledTableCell>
-                    <IconButton onClick={() => checkstarmarkHandler(row?.name)}>
+                    <IconButton onClick={() => starmarkHandler(row?.name)}>
                       {row?.favorit ? (
                         <StarRoundedIcon />
                       ) : (
@@ -76,7 +81,6 @@ const TablePriceMobile = ({ mark, formprice, filtered, setFiltered }) => {
                         >
                           ارزش:{row?.marketCap}تومان
                         </Typography>
-                        {/* خرید:{row?.marketCap} */}
                       </Grid>
                     </Grid>
                   </StyledTableCell>
