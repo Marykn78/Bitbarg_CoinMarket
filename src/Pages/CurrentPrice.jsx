@@ -25,12 +25,21 @@ const CurrentPrice = () => {
                 </Link>
             </Grid>
             <Grid container item mb={2} width={'100%'} flexWrap={'wrap'} alignItems={'center'} justifyContent={'space-between'}>
-                <Grid container item  md={4} sx={{width:'90%'}} flexWrap={'wrap'} >
+                <Grid container item  md={4} flexWrap={'wrap'} >
                     <SearchCoin />
                 </Grid>
-                <BookmarkCoin mark={mark} setMark={setMark}></BookmarkCoin>
+                <Grid item mt={1}>
+                <BookmarkCoin mark={mark} setMark={setMark} ></BookmarkCoin>
+
+                </Grid>
+                <Grid item mt={2.5}>
                 <Sortprice filtered={filtered} setFiltered={setFiltered} />
+
+                </Grid>
+                <Grid item mt={1}>
                 <ToggleButtonprice formprice={formprice} setFormprice={setFormprice} />
+
+                </Grid>
             </Grid>
             <TablePrice mark={mark}  formprice={formprice} filtered={filtered} setFiltered={setFiltered}/>
         </Grid>

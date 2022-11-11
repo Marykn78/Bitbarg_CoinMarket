@@ -7,8 +7,8 @@ import Stack from '@mui/material/Stack';
 const BookmarkCoin = ({mark,setMark}) => {
   return (
     <>
-      <Grid container item sx={{ m: 1, minWidth: 120 }} md={2}>
-        <Stack direction="row" spacing={2}>
+      <Grid container item sx={{ minWidth: 120 }} md={2}>
+        <Stack direction="row">
           <Button onClick={()=>setMark(!mark)}  sx={{width:'auto',height:'40px',padding:2}} variant="outlined" startIcon={<StarOutlineRoundedIcon />}>
             <Typography pr={'7px'} variant={'h2'}>نشان شده ها</Typography>
           </Button>
@@ -19,3 +19,5 @@ const BookmarkCoin = ({mark,setMark}) => {
 };
 
 export default BookmarkCoin;
+
+// sx={{ variant: { xs: "navtitle", md: "h2" } }} 

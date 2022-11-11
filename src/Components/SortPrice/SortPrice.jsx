@@ -25,7 +25,7 @@ const Sortprice= ({filtered,setFiltered})=> {
   },[price,filtered])
   return (
     <>
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
+      <FormControl sx={{ minWidth: 120 }}>
         <Select
           value={price}
           size={'small'}
