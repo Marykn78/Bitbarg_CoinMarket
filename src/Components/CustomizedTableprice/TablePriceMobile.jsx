@@ -4,40 +4,16 @@ import TableContainer from "@mui/material/TableContainer";
 import Grid from "@mui/material/Grid";
 import { StyledTableCell } from "../StyledTable/StyledTable";
 import { StyledTableRow } from "../StyledTable/StyledTable";
-import { useContext, useEffect } from "react";
-import { CoindataContext } from "../../Context/CoindataContext";
+import { useContext} from "react";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { SearchcoinContext } from "../../Context/CoindataContext";
 import StarOutlineRoundedIcon from "@mui/icons-material/StarOutlineRounded";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
-import { useCallback } from "react";
 
-const TablePriceMobile = ({ mark, formprice, filtered, setFiltered }) => {
-  const { coindata, setCoindata } = useContext(CoindataContext);
+const TablePriceMobile = ({formprice, filtered,starmarkHandler }) => {
   const { search } = useContext(SearchcoinContext);
 
-  const checkmarkHandler = useCallback(() => {
-    if (mark) {
-      setFiltered(coindata.filter((item) => item.favorit === true));
-    } else {
-      setFiltered(coindata);
-    }
-  }, [coindata, mark]);
-
-  useEffect(() => {
-    checkmarkHandler();
-  }, [coindata, mark]);
-  const starmarkHandler = useCallback(
-    (name) => {
-      setCoindata(
-        coindata.map((item) =>
-          item.name === name ? { ...item, favorit: !item.favorit } : item
-        )
-      );
-    },
-    [coindata]
-  );
   return (
     <TableContainer>
       <Table sx={{ minWidth: 400, overflow: "hidden" }}>

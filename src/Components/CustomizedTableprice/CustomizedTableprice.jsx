@@ -6,40 +6,17 @@ import Grid from "@mui/material/Grid";
 import { StyledTableCell } from "../StyledTable/StyledTable";
 import { StyledTableRow } from "../StyledTable/StyledTable";
 import TableRow from "@mui/material/TableRow";
-import { useContext, useEffect, useState } from "react";
+import { useContext} from "react";
 import { CoindataContext } from "../../Context/CoindataContext";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { SearchcoinContext } from "../../Context/CoindataContext";
 import StarOutlineRoundedIcon from "@mui/icons-material/StarOutlineRounded";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
-import { useCallback } from "react";
 
-const CustomizedTableprice = ({ mark, formprice, filtered, setFiltered }) => {
-  const { coindata, setCoindata } = useContext(CoindataContext);
+const CustomizedTableprice = ({ formprice, filtered,starmarkHandler}) => {
   const { search } = useContext(SearchcoinContext);
-  const checkmarkHandler = useCallback(() => {
-    if (mark) {
-      setFiltered(coindata.filter((item) => item.favorit === true));
-    } else {
-      setFiltered(coindata);
-    }
-  }, [coindata, mark]);
 
-  useEffect(() => {
-    checkmarkHandler();
-  }, [coindata, mark]);
-
-  const starmarkHandler = useCallback(
-    (name) => {
-      setCoindata(
-        coindata.map((item) =>
-          item.name === name ? { ...item, favorit: !item.favorit } : item
-        )
-      );
-    },
-    [coindata]
-  );
   return (
     <TableContainer>
       <Table sx={{ minWidth: 500 }} aria-label="customized table">
