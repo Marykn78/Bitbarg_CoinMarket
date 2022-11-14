@@ -6,9 +6,11 @@ const ToggleButtonprice = ({formprice,setFormprice}) => {
     <ToggleButtonGroup
       color="primary"
       exclusive
+      sx={{border:1,height:'40px'}}
+      // sx={{ "&.MuiToggleButton-root": { border: "1" } }}
     >
-        <ToggleButton value={'tether'} onClick={()=>setFormprice(!formprice)}>تتر</ToggleButton>
-        <ToggleButton value={'toman'} onClick={()=>setFormprice(!formprice)}>تومان</ToggleButton>
+        <ToggleButton value={'tether'} sx={{ "&.MuiToggleButton-root": { border: "none" } }} onClick={()=>setFormprice(!formprice)}>تتر</ToggleButton>
+        <ToggleButton value={'toman'} sx={{ "&.MuiToggleButton-root": { border: "none" } }} onClick={()=>setFormprice(!formprice)}>تومان</ToggleButton>
 
     // </ToggleButtonGroup>
   );

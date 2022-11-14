@@ -2,8 +2,8 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
 import Grid from "@mui/material/Grid";
-import { StyledTableCell } from "../StyledTable/StyledTable";
-import { StyledTableRow } from "../StyledTable/StyledTable";
+import { StyledTableCell } from "../../StyledTable/StyledTable";
+import { StyledTableRow } from "../../StyledTable/StyledTable";
 import { useContext} from "react";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
@@ -15,8 +15,9 @@ const TablePriceMobile = ({formprice, filtered,starmarkHandler }) => {
   const { search } = useContext(SearchcoinContext);
 
   return (
-    <TableContainer>
-      <Table sx={{ minWidth: 400, overflow: "hidden" }}>
+    //TableContainer
+    <> 
+      {/* <Table sx={{ minWidth: 400, overflow: "hidden" }} > */}
         <TableBody>
           {filtered.length === 0 ? (
             <Typography variant="navtitle">
@@ -85,8 +86,8 @@ const TablePriceMobile = ({formprice, filtered,starmarkHandler }) => {
               ))
           )}
         </TableBody>
-      </Table>
-    </TableContainer>
+      {/* </Table> */}
+    </>
   );
 };
 

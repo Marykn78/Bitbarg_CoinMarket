@@ -5,7 +5,11 @@ import Button from "@mui/material/Button";
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import Typography from "@mui/material/Typography";
 import CoinModal from "../CoinModal/CoinModal";
+import Avatar from '@mui/material/Avatar';
 import { useState, useCallback } from "react";
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import Tooltip from '@mui/material/Tooltip';
+import {Link} from 'react-router-dom'
 
 const MoneyChange = () => {
   const [form, setForm] = useState("");
@@ -85,6 +89,16 @@ const MoneyChange = () => {
           <LocalPhoneOutlinedIcon sx={{ color: "#4285F2" }} fontSize="small" />
         </Button>
       </Grid>
+      <Grid container justifyContent={'flex-end'} >
+      <Tooltip title="قیمت لحظه ای">
+        <Link to={"/CurrentPrice"}>
+      <Avatar sx={{ bgcolor:'primary.main',width:'50px',height:'50px',ml:2,display: { xs: "flex", md: "none" } }}>
+        <AttachMoneyIcon />
+      </Avatar>
+      </Link>
+      </Tooltip>
+      </Grid>
+
     </Grid>
   );
 };
