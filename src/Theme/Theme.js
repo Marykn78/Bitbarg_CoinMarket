@@ -62,7 +62,7 @@ const theme = createTheme({
         },
         subtitle1:{
             color:'#4285F2',
-            fontSize:'12px',
+            fontSize:'10px',
             lineHeight:1.5,
             fontWeight:700,
         }

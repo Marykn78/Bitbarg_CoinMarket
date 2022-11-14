@@ -10,7 +10,7 @@ const HeaderMobile = () => {
   return (
     <>
       <Toolbar sx={{ justifyContent: "space-between", boxShadow: "1" }}>
-        <Box sx={{ width: "25%" }}>
+        <Box sx={{ width: "90px" }}>
           <Logo />
         </Box>
         <Stack direction="row" spacing={2}>
