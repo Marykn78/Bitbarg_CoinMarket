@@ -52,7 +52,7 @@ const TablePriceMobile = ({ formprice, filtered, starmarkHandler }) => {
                   </Typography>
                 </Grid>
               </Grid>
-              <Grid align="center" item>
+              <Grid align="center" item width={"35%"}>
                 <Grid
                   container
                   flexDirection={"row-reverse"}

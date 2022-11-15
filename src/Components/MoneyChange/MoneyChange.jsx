@@ -54,7 +54,6 @@ const MoneyChange = () => {
             sx={{ width: "240px" }}
           ></TextField>
         </Grid>
-
         <CoinModal form={form} setForm={setForm} />
       </Grid>
       <Grid container item justifyContent={"space-around"} xs={8} md={3}>

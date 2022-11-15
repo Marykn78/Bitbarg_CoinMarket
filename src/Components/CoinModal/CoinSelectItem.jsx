@@ -11,7 +11,8 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import { useContext } from "react";
 import { CoindataContext } from "../../Context/CoindataContext";
-import SearchCoin from "../SearchCoin/SearchCoin";
+import InputAdornment from "@mui/material/InputAdornment";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { SearchcoinContext } from "../../Context/CoindataContext";
 import { useCallback } from "react";
 
@@ -29,16 +30,22 @@ const style = {
 const CoinSelectItem = ({ open, setOpen, form, setForm }) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const { search } = useContext(SearchcoinContext);
+  const { search, setSearch } = useContext(SearchcoinContext);
   const { coindata } = useContext(CoindataContext);
-  const inputHandler =useCallback((item) => {
-    setForm({
-      name: item.name,
-      icon: item.iconUrl,
-      price: Math.ceil(item.price * 34300),
-    });
-    setOpen(false);
-  },[form])
+  const inputHandler = useCallback(
+    (item) => {
+      setForm({
+        name: item.name,
+        icon: item.iconUrl,
+        price: Math.ceil(item.price * 34300),
+      });
+      setOpen(false);
+    },
+    [form]
+  );
+  const searchHandler = useCallback((e) => {
+    setSearch(e.target.value);
+  }, []);
   return (
     <>
       <TextField
@@ -56,7 +63,7 @@ const CoinSelectItem = ({ open, setOpen, form, setForm }) => {
         }}
       ></TextField>
       <Modal open={open} onClose={handleClose}>
-        <Box sx={style} width={{xs:300,md:500}}>
+        <Box sx={style} width={{ xs: 300, md: 500 }}>
           <Grid container sx={{ width: "100%" }} flexDirection={"column"}>
             <Grid container item justifyContent={"space-between"}>
               <Typography>انتخاب ارز</Typography>
@@ -65,7 +72,20 @@ const CoinSelectItem = ({ open, setOpen, form, setForm }) => {
               </IconButton>
             </Grid>
             <Grid container item mt={2} xs={12} justifyContent={"center"}>
-              <SearchCoin />
+              <TextField
+                fullWidth
+                type="search"
+                size="small"
+                placeholder="جستجو"
+                onChange={searchHandler}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchOutlinedIcon />
+                    </InputAdornment>
+                  ),
+                }}
+              />
             </Grid>
           </Grid>
           <List p={2} sx={{ maxHeight: "450px", overflowY: "scroll" }}>
