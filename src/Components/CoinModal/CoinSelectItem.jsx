@@ -15,6 +15,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { SearchcoinContext } from "../../Context/CoindataContext";
 import { useCallback } from "react";
+import { padding } from "@mui/system";
 
 const style = {
   position: "absolute",
@@ -58,7 +59,7 @@ const CoinSelectItem = ({ open, setOpen, form, setForm }) => {
         InputProps={{
           readOnly: true,
           startAdornment: (
-            <img textAlign={"center"} width={"30px"} src={form?.icon} alt="" />
+            <Grid pr={'10px'} pt={'3px'}><img textAlign={"center"} width={"30px"} src={form?.icon} alt="" /></Grid>
           ),
         }}
       ></TextField>
